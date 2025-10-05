@@ -8,6 +8,9 @@ export const NEWS_API_KEYS = [
 ];
 export const TIMEZONEDB_API_KEY = "	Z5GNN057C989"; // TimeZoneDB key
 export const TOMTOM_API_KEY = "OaK1J27NxVQ2bG6UqyBdWVsbvGmysRyC";
+// frontend/src/config.js
+export const API_BASE_URL =
+process.env.REACT_APP_API_BASE || "https://urban-plus-backend-1.onrender.com";
 
 
 

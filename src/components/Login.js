@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import { API_BASE_URL } from "../config";
 
 const Login = ({ setToken }) => {
   const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ const Login = ({ setToken }) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", formData);
+      const res = await axios.post(`${API_BASE_URL}/api/auth/login`, formData);
       setMessage(res.data.msg);
 
       // Save token

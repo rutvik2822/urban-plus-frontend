@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import { API_BASE_URL } from "../config";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -21,7 +22,7 @@ const Signup = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/register", formData);
+      const res = await axios.post(`${API_BASE_URL}/api/auth/register`, formData);
       setMessage(res.data.msg);
 
       // redirect to login after signup success

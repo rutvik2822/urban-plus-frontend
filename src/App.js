@@ -12,6 +12,7 @@ import Login from './components/Login';
 import { motion, AnimatePresence } from 'framer-motion';
 import { WEATHER_API_KEY } from './config';
 import axios from 'axios';
+import { API_BASE_URL } from "./config";
 
 function App() {
   const [city, setCity] = useState('');
@@ -27,7 +28,7 @@ function App() {
 
     const fetchUser = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/auth/me", {
+        const res = await axios.get(`${API_BASE_URL}/api/auth/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUser(res.data); // assuming backend returns { name, email }
@@ -45,7 +46,7 @@ function App() {
 
     const fetchCities = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/user/cities', {
+        const res = await axios.get(`${API_BASE_URL}/api/user/cities`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -112,8 +113,7 @@ function App() {
   const handleAddCity = async (newCity) => {
     if (token) {
       try {
-        await axios.post(
-          'http://localhost:5000/api/user/add-city',
+        await axios.post(`${API_BASE_URL}/api/user/add-city`,
           { city: newCity },
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -138,7 +138,7 @@ function App() {
 
     if (token) {
       try {
-        await axios.delete('http://localhost:5000/api/user/delete-city', {
+        await axios.delete(`${API_BASE_URL}/api/user/delete-city`, {
           headers: { Authorization: `Bearer ${token}` },
           data: { city: cityToRemove },
         });
