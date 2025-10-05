@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🔽 Custom Rain Animation */
+@keyframes rainFall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.raindrop {
+  position: absolute;
+  top: -20px;
+  width: 4px;
+  height: 10px;
+  background: rgba(135, 206, 250, 0.5);
+  border-radius: 50% 50% 60% 60%;
+  animation: rainFallWobble linear infinite;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+  z-index: 0;
+}
+
+/* ☔ Rain with wobble effect */
+@keyframes rainFallWobble {
+  0% {
+    transform: translateY(-100%) translateX(0);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(25vh) translateX(-2px);
+  }
+  50% {
+    transform: translateY(50vh) translateX(2px);
+  }
+  75% {
+    transform: translateY(75vh) translateX(-1px);
+  }
+  100% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+}
+
+/* ⚡ Lightning Flash */
+@keyframes lightningFlash {
+  0%, 100% { opacity: 0; }
+  10% { opacity: 1; }
+  20% { opacity: 0; }
+  30% { opacity: 1; }
+  40% { opacity: 0; }
+}
+
+.lightning {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: 0;
+  animation: lightningFlash 2s infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ❄️ Snowfall */
+@keyframes snowFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.snowflake {
+  position: absolute;
+  top: -20px;
+  font-size: 1.2rem;
+  color: white;
+  opacity: 0.9;
+  animation: snowFall linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 🌤️ Sun Ray Pulse */
+@keyframes sunPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+}
+
+.sunray {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 10px;
+  right: 10px;
+  background: radial-gradient(circle, rgba(255,255,0,0.3), transparent);
+  border-radius: 50%;
+  animation: sunPulse 4s infinite ease-in-out;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ☁️ Cloud Pulse */
+@keyframes cloudPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.cloudpulse {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 80px;
+  height: 50px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  animation: cloudPulse 3s infinite ease-in-out;
+  z-index: 0;
+  pointer-events: none;
+}
+
+h2, .trending-news-title 
+{
+  display: inline-flex;
+  align-items: center;
+}
+
+
+
+
