@@ -1,5 +1,6 @@
 // src/components/CitySelector.js
 import React, { useState, useEffect } from 'react';
+import { WEATHER_API_KEY } from "../config";
 
 const CitySelector = ({ selectedCity, onCityChange, onAddCity }) => {
   const [search, setSearch] = useState('');
@@ -8,9 +9,9 @@ const CitySelector = ({ selectedCity, onCityChange, onAddCity }) => {
 
   useEffect(() => {
     if (search.length > 2) {
-      const API_KEY = '71e7b244e95e5067b1d96a9771efdcfb';
+      // const API_KEY = '71e7b244e95e5067b1d96a9771efdcfb';
       fetch(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${API_KEY}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${WEATHER_API_KEY}`
       )
         .then((res) => res.json())
         .then((data) => {

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { FaSmog } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { WEATHER_API_KEY } from "../config";
 
 const aqiInfo = {
   1: {
@@ -51,8 +52,6 @@ function AQICard({ city }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const API_KEY = '71e7b244e95e5067b1d96a9771efdcfb';
-
   useEffect(() => {
     if (!city) return;
 
@@ -62,7 +61,7 @@ function AQICard({ city }) {
 
       try {
         const geoRes = await fetch(
-          `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`
+          `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${ WEATHER_API_KEY }`
         );
         const geoData = await geoRes.json();
 
@@ -71,7 +70,7 @@ function AQICard({ city }) {
         const { lat, lon } = geoData[0];
 
         const aqiRes = await fetch(
-          `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+          `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`
         );
         const aqiData = await aqiRes.json();
 
